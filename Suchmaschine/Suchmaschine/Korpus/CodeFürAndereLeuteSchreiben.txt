@@ -1,0 +1,176 @@
+http://softwaresanierung.wordpress.com/2011/09/17/code-fur-andere-leute-schreiben-teil-1/ usw.
+
+Code für andere Leute schreiben, Teil 1
+
+Es ist eine Binsenweisheit, dass Quellcode bei weitem öfter gelesen als geschriben wird und letzteres in der Regel von zahlreichen Programmierern. Es herrscht bei Programmierern zwar Einigkeit, das Code “lesbar” sein soll, doch hat noch niemand mit wissenschaftlichen Methode untersucht, was verständlichen Quellcode eigentlich ausmacht.
+
+Thomas Mullen nähert sich diesem Problem von der Seite der Kognitionspsychologie. In seinem faszinierenden Paper Writing Code for Other People – Cognitive Psychology and the Fundamentals of Good Software Design Principles skizziert er, wie Programmierer Quellcode verstehen und wie sie die Begrenzung des Kurzzeitgedächtnisses durch Gruppieren von Elementen und Benutzen von Analogien ausgleichen.
+
+Ferner zeigt er, dass es große Unterschiede in der Art und Weise gibt, in der Programmieranfänger und Erfahrene Programmierer Quellcode lesen und verstehen. Da der Text nicht ganz einfach verständlich ist, möchte ich die wichtigsten Punkte allgemein verständlicher aufbereiten und in mehreren Teilen veröffentlichen. Den Anfang machen die von Thomas Mullen verwendeten Elemente der Kognitionspsychologie.
+Elemente der Kognitionspsychologie
+
+Laut Wikipedia bezeichnet man mit Kognition (von lat. cognoscere: erkennen, erfahren, kennenlernen) in der Psychologie mentalen Prozesse und Strukturen eines Individuums wie Gedanken, Meinungen, Einstellungen, Wünsche, Absichten. Kognitionen können auch als Informationsverarbeitungsprozesse verstanden werden, in denen Neues gelernt und Wissen verarbeitet wird, z. B. in Bezug auf Denken und Problemlösung.
+
+Die Kognitionspsychologie wiederum beschäftigt sich mit all jenen psychischen Vorgängen, die mit Wahrnehmung, Erkenntnis und Wissen zu tun haben.
+
+Für seine Untersuchungen verwendet Thomas Mullen folgende Elemente der Kognitionspsychologie:
+
+    Chunks – Fernand Gobet und seine Kollegen  bezeichnen mit Chunk eine Ansammlung von Gedächtnisinhalten, die starke Assoziationen untereinander aber schwache zu Inhalten anderer Chunks haben.
+    Das Kurzzeitgedächtnis beinhaltet Gedächtnisinhalte, die in einem bestimmten Moment im Vordergrund stehen (beispielsweise bei der Problemlösung). Das Kurzzeitgedächtnis ist auch verantwortlich für die Erzeugung von Chunks, die dann durch ständige Wiederholungen (Training) in das Langzeitgedächtnis übergehen. Das Kurzzeitgedächtnis hat eine beschränkte Kapazität und die Aufnahmefähigkeit ist zeitlich begrenzt. Gedächnisinhalte bleiben in der Regel kürzer als 10 Sekunden im Kurzzeitgedächtnis. In dieser Zeit werden sie entweder ins Langzeitgedächtnis überführt oder durch neue Inhalte überschrieben.
+    Das Langzeitgedächtnis ist scheinbar nahezu unbegrenzt. Im Langzeitgedächtnis speichern wir unsere Erinnerungen und Erfahrungen. Wir holen sie uns nach Bedarf ins Kurzzeitgedächtnis zurück, wenn wir Probleme lösen. Die einzige bekannte Beschränkung ist die Zeit, die es benötigt, um etwas abzuspeichern, nämlich 2 bis 8 Sekunden.
+    Expertenwissen – Anfänger und Experten unterscheiden sich in der Art und Weise, wie sie an die Problemlösung herangehen und Probleme lösen. Bezogen auf den Quellcode ist es bemerkenswert, dass Code, der für Anfänger verständlich ist, oft weniger verständlich für Experten ist.
+    Analogieschlüsse – Analogien sind ein zentrales Werkzeug menschlicher Intelligenz. Die Identifikation und Auswahl von Analogien wird durch Ähnlichkeiten, Strukturen und Beweggründe gesteuert.
+
+Im zweiten Teil beschäftigen wir uns mit dem Kurzeitgedächtnis und wie wir dessen Beschränkung umgehen, indem wir Gedächtnisinhalte zu Chunks zusammenfassen. Danach wenden wir die so gewonnenen Erkenntnisse auf konkrete Quellcodebeispiele an.
+
+Code für andere Leute schreiben, Teil 2
+
+Nachdem im ersten Teil die grundlegenden Elemente der Kognitionspsychologie vorgestellt wurden fährt Thomas Mullen nun mit der Erläuterung des Kurzzeitgedächtnisses fort und erklärt unter anderem, was es mit dem Chunking auf sich hat.
+Chunking und das Gedächtnis
+
+Die Mathematische Untersuchung von Speichernetzwerken hat gezeigt, dass die Suche optimiert wird, wenn Knoten (Verbindungen  zwischen Speicherinhalten) zu Gruppen (Chunks) von 4 oder 5 Elementen zusammengefasst werden. Es spricht also einiges dafür, dass die Kapazität des Kurzzeitgedächtnisses durch die Evolution begrenzt wurde, um optimale Netzwerke für das Langzeitgedächtnis zu schaffen.
+
+Flaschenhalsmodell. Quelle: h.age.net
+
+Droht das Kurzzeitgedächtnis also “überzulaufen”, wird man also gezwungen, Gedächtnisinhalte zu Chunks zusammenzufassen, will man nicht den Faden verlieren. Also ist es sinnvoll, den Code in Gruppen (Chunks) von 4 oder 5 Elementen zusammenzufassen, um zu vermeiden, dass der Leser nicht mehr mitkommt. Das kann mit visuelle Mitteln (Leerzeilen, Einrückungen) oder Sprachmitteln geschehen (Klammern, Block-Strukturen).
+
+Immer wenn wir lernen, ein Problem zu verstehen, fasst unser Gehirn automatisch zusammengheörige Informationen zu Chunks zusammen. Das gelingt allerdings nicht immer beim ersten Mal und wir finden oft erst durch Versuch und Irrtum eine Gruppierung, die uns bei der Analyse des Problems weiterhilft. Generell gilt, dass je stärker die Assoziation zwischen den Elementen ist, desto eher werden sie kombiniert.
+
+Die Kanten des Würfels sind imaginär; sie werden von unserem Gehirn nach dem Gesetz der guten Fortsetzung erzeugt. Quelle:Wikipedia.
+
+Die Gesetze der Prägnanz der Gestaltpsychologie beschreiben, wie wir Gruppen von Elementen erkennen. Zahlreiche Programmierer verwenden diese Gestzte, um Elemente zu gruppieren und so das Wissen um diese Zusammenhänge an ihre Kollegen weiterzugeben. Hier ein paar Beispiele:
+
+    Gruppieren nach dem Gesetzt der Nähe. In folgendem Beispiel sind die Anweisungen optisch durch Leerzeichen gruppiert. Programmzeilen, die nahe beieinander liegen, werden durch den Leser automatisch gruppiert.
+
+
+   
+
+    Gruppieren nach dem Gesetz der Ähnlichkeit. Programmzeilen werden gruppiert, indem sie an die selbe Spaltenposition eingerückt werden. Im folgenden Beispiel werden die Programmzeilen innerhalb der Schleife vom Leser automatisch gruppiert.
+
+
+    
+
+Der Wunsch, zusammengehörendes zu Gruppieren, drückt sich in zahlreichen Entwicklungsprinzipien und Entwurfsmustern und auch Refactoring-Praktiken aus. Ein paar Beispiele:
+
+    In Wertobjekten werden Daten, die miteinander in Beziehung stehen [z.B. Betrag und Währung, Maß und Einheit, etc.], zusammengefasst.
+    Die Normalisierung in relationalen Datenbanken spiegelt den Wunsch wieder, Daten zu Chunks zusammenzufassen.
+    Zahlreiche Refactoring-Praktiken, die Martin Fowler in seinem Buch beschreibt, beschäftigen sich mit dem Erkennen und Kenntlichmachen von Chunks im Code. So ist zum Beispiel Methode Extrahieren eine Technik, mit der man Anweisungen, die miteinander in einer engeren Beziehung stehen als andere, in eine eigene Methode auslagert und so gruppiert.
+    In Kent Becks und Ward Cunninghams CRC-Modell wird [zur Einhaltung des Gesetzes von Demeter] gefordert, dass eine Klasse nur mit zwei bis drei anderen Klassen kommunizieren soll.
+    Das Einzelzuständigkeitsprinzip, das fordert, dass Klassen und Methoden nur für eine einzige Sache zuständig sein sollen, ist eine Optimierungsstrategie, die Chunks produziert, wie sie von den Psychologen definiert werden (wir erinnern uns: Ein Chunk ist eine Ansammlung von Elementen (Gedächtnisinhalten), die starke Assoziationen untereinander aber schwache zu Elementen anderer Chunks haben).
+
+Im dritten Teil dieser Artikelserie beschäftigen wir uns mit dem Langzeitgedächtnis, wie es uns vor dem Verzehr von giftigen Reptilien schützt und was das Erweiterungsprinzip damit zu tun hat.
+
+Code für andere Leute schreiben, Teil 3
+
+Im zweiten Teil wurden das Chunking und das Kurzzeitgedächtnis ausführlich erläutert und gezeigt, wie sich diese Themen in Entwicklungsprinzipien, Entwurfsmustern und Refactoring-Praktiken niederschlagen. Nun wendet sich Thomas Mullen dem Langzeitgedächtnis zu.
+Die Struktur des Langzeitgedächtnisses und das Problem mit dem Umlernen
+
+Die Speicherung von Gedächtnisinhalten im Langzeitgedächtnis werden erfolgreich als Entscheidungsnetzwerk modelliert. Entscheidungsnetzwerke werden unter anderem dazu verwendet, um Entscheidungsvorgänge, das Entstehen von Konzepten und das Wiedererkennen zu modellieren.
+
+Die Theorie besagt, dass Gedächtnisinhalte in Netzwerke eingebunden werden. Bevor ein neuer Gedächtnisinhalt in ein solches Netzwerk eingefügt wird, wird erst einmal ein passender Ort dafür gesucht. Daraufhin wird das Netzwerk um das neue Element erweitert oder so modifiziert, dass das neue Element hineinpasst. Ein Knoten des Netzwerks hat neben Beziehungen zu anderen Knoten ein Image. Dieses Image kann ein Buchstabe, ein Wort, ein Ton, ein visuelles Bild oder ein Gefühl sein. Wenn Sie schon einmal eine Mind-Map gesehen haben, wird Ihnen das Prinzip vertraut sein.
+
+Eine Mind-Map über Mind-Maps. Quelle: Wikipedia.
+
+Der Aufbau der Netzwerke geschieht während des Trainings, nachdem diese in das Kurzzeitgedächtnis geladen wurden.Das Antrainieren von neuen Gedächtnisinhalten liegt normalerweise in der Größenordnung von einige Sekunden, allerdings können neue Inhalte das Netzwerk so umstrukturieren, dass Verbindungen zwischen bestehenden Inhalten aufgebrochen werden. Diese existierenden Elemente müssen dann abermals erlernt (umgelernt) werden, damit ein neues Netzwerk entstehen kann, dass alle bereits erlernten Inhalte umfasst. Natürlich ist jedes Umlernen mit einem Zeitaufwand verbunden und es kann für den Lernenden frustriend sein, dabei das Gefühl zu haben, sich rückwärts, also von einer neuen, bedeutsamen Erkenntnis weg zu bewegen.
+
+Bertrand Meyer’s Erwiterungsprinzip kann man als Echo jenes mentalen Prozesses sehen, der danach trachtet, den Aufwands des Umlernens zu reduzieren. Vom Standpunkt der Evolution ist das durchaus sinnvoll. Wenn ich beispielsweise jemanden sehe, der sich vor schmerzen windet, nachdem er eine schwarze Eidechse mit gelben Flecken gegessen hat,  habe ich eine größere Überlebenschance (und damit die Chance, meine Gene weiterzugeben), wenn ich solche Reptilien meide.
+
+Feuersalamander. Quelle: Wikipedia.
+
+Wenn ich daraufhin jemaden eine schwarze Schlange mit gelben Flecken essen sehe, der diese Mahlzeit gut verträgt, möchte ich mich daran erinnern, das Schlangen bekömmlich sind, ohne dass ich darauf vergesse, das Eidechsen giftig sind. Ich möchte also, dass mein Geist offen für Erweiterungen aber [wo es notwendig ist] geschlossen für Änderungen ist und das ist genau das, was das Erweiterungsprinzip aussagt.
+
+Wie bereits im letzten Artikel erwähnt hat sich unser Gehirn dahingehend entwickelt, dass es den Aufwand für das Suchen von Gedächtnisinhalten und für das Umlernen minimiert. Wenn wir also unseren Code so strukturieren, dass er unserem Langzeitgedächtnis ähnelt, wird er leichter und schneller von anderen verstanden werden. Entwicklungsprinzipien geben uns einen Einblick in die Art und Weise, wie unser Gehirn funktioniert, ganz im Gegensatz zu Regeln, die auf mathematischen Verfahren beruhen.
+
+Vereinfachtes kognitives Modell. Quelle: Thomas Mullen.
+
+Im nächsten Teil beschäftigen wir uns mit der kognitiven Belastung beim Lernen und worauf man aufpassen muss, wenn man diese Belastung soweit wie möglich reduzieren möchte.
+
+Code für andere Leute schreiben, Teil 4
+
+Nachdem wir im dritten Teil dieser Artikelserie über Thomas Mullen’s Paper die Grundzüge der Funktionsweise des Langzeitgedächtnisses kennengelernt haben, befassen wir uns nun mit den Ursachen dafür, das der Übergang vom Kurzzeit- ins Langzeitgedächtnis nicht problemlos funktioniert.
+Die kognitiven Belastung beim Lernen
+
+In Studien zum Thema kognitive Belastung werden zwei in diesem Zusammenhang relevante Prinzipien beschrieben: Redundante Informationen und der Effekt der geteilten Aufmerksamkeit. Wenn Informationen hinzugefügt werden, die bereits bekanntes wiederholen, ohne neue Einsichten zu vermitteln, erschwert das das Lernen. Die redundanten Informationen sind nicht unproblematisch, da sie wertvolle Ressourcen im Kurzzeitgedächtnis blockieren können, und so das Lernen erschweren. Beispielsweise beschreibt ein Kommentar für eine einfache Getter- [oder Setter-] Methode etwas, was sich ohnehin zwangsläufig aus dem Quellcode erschließt:
+
+
+Diese Art Kommentare erschweren sogar das Lesen und Verstehen des Codes, obwohl sie eigentlich das Gegenteil beabsichtigen!
+
+Der Effekt der geteilten Aufmerksamkeit besagt, dass wenn ein Text ein Bild beschreibt und der Text wird an einer anderen Stelle als das Bild positioniert, dann ist es schwieriger, den Text zu verstehen. Das kommt daher, dass das Kurzzeitgedächtnis zusätzliche Informationen über die Verbindung zwischen dem Text und dem Bild zwischenspeichern muss. Das blockiert wiederum die begrenzten Ressourcen im Kurzzeitgedächtnis und damit bleiben weniger Kapazitäten zum Lernen und Begreifen.
+
+Nicht nur Studenten leiden unter kognitiver Belastung. Quelle: n24.de
+
+Oft werden von Programmierern zusätzliche Abstraktionsschichten eingefügt. Damit steigt aber auch die kognitive Belastung für den Leser des Quellcodes, da so neue Verknüpfungen zwischen Code-Bestandteilen entstehen.  Zwischen Abstraktionsschichten hin und her zu navigieren kann zu Zeit- und Kapazitätsproblemen im Kurzzeitgedächtnis führen.
+
+Wenn man beispielsweise die Funktionsweise einer Methode verstehen möchte und dazu zu eine andere Klasse inspizieren muss, dauert das vielleicht ein paar Sekunden (wir erinnern uns, dass Gedächtnisinhalte nur ein paar Sekunden im Kurzzeitgedächtnis bleiben, also zählt jede Sekunde), allerdings muss möglicherweise jede Abstraktionsschicht und deren externe Abhängigkeiten verstanden werden. Das alles benötigt zusätzliche Kapazitäten im Kurzzeitgedächtnis und führt dazu, dass der Ursprüngliche Inhalt aus dem Kurzzeitgedächtnis verschwindet, sodass es keine Möglichkeit mehr gibt, ihn zu trainieren und so ins Langzeitgedächtnis zu überführen.
+
+Wir sind zwar erstaunlich geübt darin, alle diese Informationen durch Chunking im Gedächtnis zu behalten, es gibt da allerdings ein Grenze und wir bekommen keine Warnsignale, wenn wir an diese Granze stoßen oder sie gar Überschreiten. Wir merken das erst, wenn wir uns plötzlich nicht mehr so genau erinnern können, wonach wir eigentlich im Quellcode eigentlich gesucht haben und warum wir an dir Stelle im Quellcode gelandet sind, wo wir uns befinden.
+
+Ein schönes Beispiel für den übermäßigen Einsatz von Abstraktionsschichten und deren negative Auswirkungen auf die Verständlichkeit des Quellcodes ist Jason Tiscioni’s Hello-World-Programm. Durch konsequentes Einfügen von Abstraktionsschichten bläht er dieses einfache Programm…
+
+
+Jede Abstraktionsschicht für sich mag nicht übertrieben schwierig zu verstehen sein, wenn man sie isoliert betrachtet, doch wenn wir nicht aufpassen, überschreiten wir leicht die Grenzen des Kurzzeitgedächtnisses und wir kommen durcheinander. Entwicklungsumgebungen können die kognitive Belastung reduzieren, indem sie beispielsweise eine kurze Vorschau auf die Implementierung einer Methode gewähren. Wir können uns auch schriftliche Notizen machen, um nicht den Faden zu verlieren. Natürlich haben zusätzliche Abstraktionsschichten ihre Vorteile (für das Chunking), allerdings sind sie auch immer mit einer zusätzlichen kognitiven Belastung verbunden.
+
+Im nächsten Teil beschäftigen wir uns mit dem Unterschied in der Art und Weise, wie Neulinge und Experten Quellcode lesen und interpretieren.
+
+Code für andere Leute schreiben, Teil 5
+
+Auf die Ausführungen zur kognitiven Belastung beim Lernen folgt in Mullen’s Paper ein Abschnitt über den Unterschied in der Art und Weise, wie Neulinge – also Programmierer, die zum ersten Mal an einer bestimmten Anwendung arbeiten – und Experten – dass sind Programmierer, die eine Anwendung schon seit Monaten oder Jahren kennen – Quellcode lesen und interpretieren.
+Code für Neulinge und Experten
+
+Je mehr Erfahrung wir sammeln, desto eher scannen wir den Quellcode, statt ihn zu lesen. In dem Teil unseres Gehirns, indem visuelle Reize verarbeitet werden, werden die eingehenden visuellen Informationen mit Vorlagen aus unserem Gedächtnis verglichen. Diese Vorlagen entstehen in den Monaten und Jahren, in denen wir uns das Expertenwissen über ein Programm aneignen. Diese Vorlagen erlauben es dem Experten, sowohl die Struktur [eines Programms] als auch unübliche oder fehlerhafte Muster unmittelbar zu “sehen” und zwar so als ob die Verarbeitung unbewusst geschehen würde (siehe Didierjean, Gobet: Sherlock Holmes – An expert’s view of expertise).
+
+Michael Caine und Ben Kingsley als Sharelock Holms und Dr. Watson. In der Gaunerkomödie Genie & Schnauze (engl. Without a Clue) ist Dr. Watson das Genie und Sharelock Holms ein arbeitsloser Schauspieler mit Hang zum Alkohol und zum anderen Geschlecht…
+
+Dadurch ist es für einen Experten vorteilhaft, soviel Code wie möglich in seinem Blickfeld zu haben. Wie wir im vorigen Teil gesehen haben, wird dadurch auch der Effekt der geteilten Aufmerksamkeit reduziert. Wenn hingegen zuviel Code im Gesichtsfeld des Neulings platziert wird, dann ist es möglich, dass in seinem Gehirn eine kognitive Überlastung platzgreift. Neulinge profitieren davon, wenn der Code so strukturiert ist, dass ihre Aufmerksamkeit zu jedem Zeitpunkt auf ein paar Elemente beschränkt bleibt.
+
+Expertenwissen über ein Programm oder über einen Teil davon is nicht auf Programmierer mit großer Erfahrung beschränkt. Natürlich wird es für einen Softwareexperten einfacher sein als für einen Neuling, sich in eine neue Software einzuarbeiten, allerdings wird jeder Programmierer – ob Neuling oder Experte – zum Experten in dem Code, den er selbst schreibt. Schleißlich hätte er nicht die geringste Chance sein Programm überhaupt zum Laufen zu bringen, würden er das zugrundeliegende Problem und die Lösung nicht in allen Einzelheiten verstehen.
+
+Im Übrigen ist das Verstehen eines Programm als Aufgabenstellung vergleichsweise überschaubar, wenn man es beispielsweise mit Aufgabenstellungen der Physik und anderen Disziplinen vergleicht, also ist es üblicherweise eine Frage von Monaten oder einem Jahr bis auch ein unerfahrener Programmierer ein Experte in zumindest einem Teil der Anwendung wird mit der er sich tagtäglich beschäftigt.
+
+Wer kennt sie nicht? Überladene Powerpointpräsentationen. So hat der Autor alles im Blickfeld aber das Publikum wird völlig überfordert. Quelle: The HG2S Training Blog.
+
+Als Beispiel bevorzugen Neulinge üblicherweise eine agressivere Normalisierung als Experten, da durch die Normalisierung Daten in Chunks aufgeteilt werden, was die kognitive Überlastung reduziert. Der Experte hat hingegen verwendet die Vorlagen, die sich sein Gehirn im laufe der Zeit zurechtgelegt hat, um die Chunks unmittelbar zu “sehen”. Eine weitergehende Normalisierung wird er eher als unnötige Abstraktionsschicht wahrnehmen, die ihm das verstehen [des Datenbankschemas] erschwert.
+
+Solange Neulinge und Experten ein und den selben Quellcode lesen und verstehen müssen wird es also immer gegengesetzte Interessen geben. Die ersteren wollen die kognitive Überlastung durch Aufteilen des Codes in Chunks vermeiden, die anderen möchten so viel Code wie möglich auf einmal im Blickfeld haben. Kompromisse auf beiden Seiten sind also unvermeidlich. Es dauert allerdings nicht lange, bis der Neuling zum Experten in der Anwendung wird, an der er arbeitet und dann wird er von der Codestruktur des Experten profitieren, allerdings haben die meisten Teams bei weitem mehr Neuling als Experten.
+
+Alles auf einen Blick: Zwei Klassen mit insgesamt 30.000 Zeilen Code. Quelle: Robert C. Martin.
+
+Die Lösung, die der Mehrzahl der Programmierer dient, bedeutet häufig, dass der Experte eine größere Anzahl an Abstraktionsschichten und damit eine für ihn höhere kognitive Belastung akzeptieren muss. Wenn wir mit ein neues Programm schreiben, beginnen wir mit einer Codebasis die klar und einfach ist, aber da der Code mit der Zeit mehr und mehr Anforderungen erfüllen muss, wächst er kontinuierlich. Da wir, was den Code betrifft, den wir selbst schreiben, zwangsläufig Experten sind, werden wir unbewusst danach trachten, immer möglichst viel Code im Blickfeld zu haben. Code Reviews sind unter anderem dabei nützlich, uns auf unnötige Komplexitäten im Quellcode aufmerksam zu machen, über die wir uns als Autoren des Codes nicht bewusst sind, die aber unseren Kollegen das nachvollziehen des Code erschweren.
+
+Im sechsten Teil dieser kleinen Serie beschäftigen wir uns mit dem umfangreichsten Teil des Papers: Mit Analogien, dem wahrscheinlich wichtigsten Werkzeug menschlicher Intelligenz.
+
+Code für andere Leute schreiben, Teil 6
+
+Das letzte große Thema in Thomas Mullen’s Paper widmet sich den Analogien, dem wahrscheinlich wichtigsten Werkzeug menschlichen Denkens. Den Anfang macht die Frage, wie wir in bestimmten Situationen passende Analogien auswählen.
+Die Auswahl von Analogien
+
+Als Analogie bezeichnet man eine Form der Übereinstimmung von Objekten physischer oder abstrakter Natur hinsichtlich gewisser Merkmale.
+
+Für viele Psychologen sind Analogie ein zentraler Punkt menschlicher Intelligenz. Manche eröffnen neue Einsichten (z.B. Niels Bohrs Atommodell, indem die Elektronen um den Kern wie Planeten um die Sonne kreisen), andere erlauben uns, bestehende Kenntnisse in neue Situationen anzuwenden (zum Beispiel, wenn wir lernen, ein Motorboot zu fahren, nachdem wir bereits gelernt haben, ein Auto zu fahren). Laut Douglas R. Hofstadter sind Analogien ein zentraler Punkt menschlicher Erkenntnis. Sie sind die Bausteine für die Art und Weise, wie wir Konzepte verstehen.
+
+Analogies. Quelle: XKCD.
+
+Holyoak & Thagard identifizieren drei weitläufige Kriterien für die Auswahl von Analogien: Ähnlichkeit, Struktur und Zweck. Ein Spieleprogrammierer könnte beispielsweise das Verhalten eines virtuellen Tigers abhängig von seinem mentalen Zustand modellieren (hungrig, verletzt, bedroht). Dabei werden die mentale Zustände des Tigers als Varianten, die in Abhängigkeit davon modellierte Verhaltensmuster (Bewegungen des Tiers, die Wahrscheinlichkeit eines Angriffs) als Strukturelemente Bezeichnet [Varianten von "Tiger" wären dann "hungriger Tiger", "verletzter Tiger", "bedrohter Tiger"].
+
+Der World Wild Fund for Nature (WWF) sieht den Tiger eher vom Standpunkt des Artenschutzes, dabei sind die Umwelt, die Häufigkeit von Nachwuchs, die aktuelle Population etc. die Strukturelemente der Analogie. In der WWF-Analogie ist der Tiger die Variante [eine Variante von "Gattung" zum Beispiel], sowie andere bedrohte Arten wie der Panda. Es ist also der Zweck, der die Auswahl der Analogie für den Spieleprogrammierer und den WWF bestimmt.
+
+Der Tiger und die fünf Schweinchen. Quelle: Say No To Crack.
+
+In der Software kann ein und dieselbe Klasse (oder ein und derselbe Codebestandteil) anderen Codebestandteilen unterschiedliche Analogien zur Verfügung stellen. Ein Datenzugriffsobjekt wird beispielsweise allen Codebestandteilen Lese- und Schreibverhalten zur Verfügung stehen, die Zugang zu gespeicherten Daten benötigen. Codebestandteilen, die mit der Initialisierung der Anwendung betraut sind, wird dasselbe Datenzugriffsobjekt jedoch einen Konstruktor oder eine Methode setDataSource zur Verfügung stellen, über den oder die das Objekt Zugang zur Datenbank bekommt.
+
+Auch in diesem Fall wird die Auswahl der Analogie durch den Zweck (Zugang zu Daten, Initialisierung) bestimmt. Unterschiedlichen Codebestandteilen unterschiedliche Analogien zur Verfügung zu stellen kann die mentale Belastung beim Verstehen einzelner Codebestandteile reduzieren.
+
+Dedre Gentner schlug 1983 einen Algorithmus vor der den Einfluss der Struktur der Analogie auf die Auswahl beschreibt. Gentner unterscheidet vier Kategorien von Analogien:
+Bezeichnung 	Beschreibung 	Beispiel
+Direkte Analogie 	Zahlreiche Objekteigenschaften und Beziehungen zwischen Objekten stimmen überein 	Das Sonnensystem K5 ist wie unser eigenes Sonnensystem
+Einfache Analogie 	Zahlreiche Beziehungen zwischen Objekten stimmen überein, allerdings wenige Objekteigenschaften 	Das Atom ist wie unser Sonnensystem
+Regelanalogie 	Wie einfache Analogie, allerdings enthalten die unterschiedlichen Varianten wenige Objekteigenschaften. 	Das Atom ist ein System in dem alle Kräfte vom Zentrum ausgehen
+Anomalie 	Wenige Beziehungen zwischen Objekten und wenige Eigenschaften stimmen überein 	Kaffee ist wie ein Sonnensystem
+
+Diese Kategorien werden in der Softwareentwicklung häufig wie folgt umgesetzt:
+
+    Alle Instanzen einer Klasse direkte Analogien, wobei die Klassendefinition selbst als Abbildung fungiert. Genauso verhält es sich mit den Zeilen einer Datenbanktabelle, wobei in diesem Fall die Spaltennamen als Abbildung dienen.
+    Interfaces und abstrakte Klassen können benutzt werden, um die Abbildung von einfachen Analogien zu beschreiben.
+    Mit einem parametrisierten Datentyp (Generic, Template) wird häufig eine Regelanalogie ausgedrückt. Die Klasse Set<T> hat selbst keine Informationen darüber, welche Objekte später in die Instanz der Klasse aufgenommen werden. Anstelle des konkreten Typs wird in der Klassendefinition einfach der Platzhalter T verwendet.
+
+Im nächsten Teil folgen den theoretischen Ausführungen konkrete Beispiele.
